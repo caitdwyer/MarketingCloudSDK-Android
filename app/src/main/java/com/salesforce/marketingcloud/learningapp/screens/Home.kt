@@ -76,6 +76,10 @@ class Home : SdkFragment() {
             findViewById<Button>(R.id.button_inbox).setOnClickListener {
                 navController.navigate(HomeDirections.actionHomeToInbox())
             }
+
+            findViewById<Button>(R.id.button_track).setOnClickListener {
+                navController.navigate(HomeDirections.actionHomeToTrackingEvent())
+            }
         }
     }
 

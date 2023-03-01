@@ -91,5 +91,29 @@
             app:layout_constraintStart_toStartOf="@id/textview_inbox"
             app:layout_constraintTop_toBottomOf="@id/textview_inbox" />
 
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/inbox_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="textview_inbox,button_inbox" />
+
+        <TextView
+            android:id="@+id/textview_track"
+            style="@style/TextAppearance.SectionHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Track Event"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inbox_barrier" />
+
+        <Button
+            android:id="@+id/button_track"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open Event Tracking Screen"
+            app:layout_constraintStart_toStartOf="@id/textview_track"
+            app:layout_constraintTop_toBottomOf="@id/textview_track" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

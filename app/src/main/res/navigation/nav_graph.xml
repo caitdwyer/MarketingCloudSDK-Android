@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_home_to_inbox"
             app:destination="@id/inbox_graph" />
+        <action
+            android:id="@+id/action_home_to_trackingEvent"
+            app:destination="@id/trackingEvent" />
     </fragment>
 
     <fragment
@@ -54,4 +57,8 @@
                 app:argType="string" />
         </fragment>
     </navigation>
+    <fragment
+        android:id="@+id/trackingEvent"
+        android:name="com.salesforce.marketingcloud.learningapp.screens.TrackingEvent"
+        android:label="TrackingEvent" />
 </navigation>
