@@ -36,6 +36,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.salesforce.marketingcloud.MarketingCloudSdk
 import com.salesforce.marketingcloud.learningapp.R
 import com.salesforce.marketingcloud.learningapp.SdkFragment
+import com.salesforce.marketingcloud.sfmcsdk.SFMCSdk
 
 private const val DOCUMENTATION_URL =
     "https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/"
@@ -84,16 +85,20 @@ class Home : SdkFragment() {
     }
 
     private fun setRegistrationValues(sdk: MarketingCloudSdk) {
+        SFMCSdk.requestSdk { sfmc ->
+            sfmc.identity.apply {
+                setProfileId("username@example.com")
+                setProfileAttribute("LastName", "Smith")
+            }
 
-        // Update the registration with user data.  This information can then be used by a marketer
-        // in the Marketing Cloud UI to target this device/user for messaging.
-        val success = sdk.registrationManager.edit().apply {
-            setContactKey("username@example.com")
-            setAttribute("LastName", "Smith")
-            addTag("Camping")
-        }.commit()
+            // Update the registration with user data.  This information can then be used by a marketer
+            // in the Marketing Cloud UI to target this device/user for messaging.
+            val success = sdk.registrationManager.edit().apply {
+                addTag("Camping")
+            }.commit()
 
-        (if (success) "Registration updated" else "Registration unchanged").showSnackbar()
+            (if (success) "Registration updated" else "Registration unchanged").showSnackbar()
+        }
     }
 
     private fun showRegistration(sdk: MarketingCloudSdk) {
